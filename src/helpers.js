@@ -29,6 +29,7 @@ const pokemonColors = {
   pink: "#F48FB1",
   gray: "#BDBDBD",
   white: "#CFD8DC",
+  black: "#90A4AE",
 };
 
 export { typeColors, pokemonColors };
