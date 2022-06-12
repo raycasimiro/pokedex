@@ -30,7 +30,7 @@ const StatBar = ({ bgcolor, value, label, basestat }) => {
     display: "flex",
     flexWrap: "no-wrap",
     alignItems: "center",
-    marginBottom: ".2rem",
+    // marginBottom: ".2rem",
   };
 
   const statContainerStyles = {

@@ -86,7 +86,7 @@ const Modal = ({ isOpen, toggleModal, pokemon, pokemonSpecies }) => {
                 <p className="pokemon-description">
                   {getDescription(pokemonSpecies)}
                 </p>
-                <h3 style={{ padding: "1rem 0" }}>Type:</h3>
+                <h3 style={{ padding: "2rem 0px 1rem 0" }}>Type</h3>
                 <div>
                   {pokemon.types.map((type, index) => {
                     return (
@@ -100,7 +100,7 @@ const Modal = ({ isOpen, toggleModal, pokemon, pokemonSpecies }) => {
                     );
                   })}
                 </div>
-                <h3 style={{ paddingTop: "2rem" }}>Base Stats:</h3>
+                <h3 style={{ padding: "2rem 0px 1rem 0" }}>Base Stats</h3>
                 <div className="pokemon-stats">
                   {pokemon.stats.map((stat, index) => {
                     return (
@@ -120,7 +120,7 @@ const Modal = ({ isOpen, toggleModal, pokemon, pokemonSpecies }) => {
               <button className="btn-back" onClick={toggleModal}>
                 <BsArrowReturnLeft
                   fontSize="1.2rem"
-                  color="#B0BEC5"
+                  color="#333333"
                   style={{ height: "100%" }}
                 />
                 {/* CLOSE */}
