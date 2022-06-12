@@ -32,9 +32,12 @@ const Header = ({ searchPokemon }) => {
         onInput={(e) => {
           setQuery(e.target.value);
         }}
-        onKeyPress={(e) =>
-          e.key === "Enter" && handleCheck(query.toLowerCase())
-        }
+        onKeyPress={(e) => {
+          if (e.key === "Enter") {
+            e.target.blur();
+            handleCheck(query.toLowerCase());
+          }
+        }}
         onChange={() => {
           searchBox.current.classList.remove("error");
         }}

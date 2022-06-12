@@ -1,4 +1,4 @@
-import { BsXLg } from "react-icons/bs";
+import { BsXLg, BsArrowReturnLeft } from "react-icons/bs";
 import { typeColors, pokemonColors } from "../../helpers.js";
 import "./modal.css";
 import StatBar from "../StatBar/StatBar.js";
@@ -115,6 +115,16 @@ const Modal = ({ isOpen, toggleModal, pokemon, pokemonSpecies }) => {
                   })}
                 </div>
               </div>
+            </div>
+            <div className="modal-footer">
+              <button className="btn-back" onClick={toggleModal}>
+                <BsArrowReturnLeft
+                  fontSize="1.2rem"
+                  color="#B0BEC5"
+                  style={{ height: "100%" }}
+                />
+                {/* CLOSE */}
+              </button>
             </div>
           </div>
         </div>
