@@ -48,9 +48,9 @@ body.modal-open {
 
 .modal-footer {
   padding: 1.5rem;
-  display: none;
+  display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   position: relative;
   border-top: 1px solid #E0E0E0;
 }
@@ -69,9 +69,9 @@ body.modal-open {
     top: 0;
     transform: translateY(0)
   }
-  .modal-footer {
+  /* .modal-footer {
     display: flex;
-  }
+  } */
 }
 
 .btn-dismiss {
@@ -80,7 +80,8 @@ body.modal-open {
   width: 48px;
   border-radius: 100%;
   border: 0;
-  background-color: #E57373;
+  color: #CFD8DC;
+  background-color: transparent;
   cursor: pointer;
   transition: 0.2s;
   position: absolute;
@@ -89,19 +90,44 @@ body.modal-open {
 }
 
 .btn-dismiss:hover {
-  background-color: #EF5350;
+  color: #EF5350;
 }
 
-.btn-back {
+.footer-btn {
   flex-shrink: 0;
   height: 48px;
   width: 48px;
   font-weight: 600;
   border-radius: 100%;
-  border: 1px solid #B0BEC5;
-  background-color: transparent;
+  color: #ffffff;
+  background-color: #512DA8;
+  border: 0;
   cursor: pointer;
   transition: 0.2s;
+}
+
+
+.footer-btn-dismiss {
+  flex-shrink: 0;
+  height: 48px;
+  width: 48px;
+  font-weight: 600;
+  border-radius: 100%;
+  color: #333;
+  background-color: transparent;
+  border: 1px solid #37474f;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.footer-btn:hover {
+  background-color: #AB47BC;
+}
+
+button:disabled,
+button[disabled]:hover {
+  background-color: #ccc;
+  cursor:unset;
 }
 
 .modal-body {
@@ -134,9 +160,11 @@ body.modal-open {
   border-radius: .375rem .375rem 0 0;
   height: 300px;
   padding: 1rem;
+  transition: background-color 0.5s ease
 }
 
 .pokemon-img {
+  opacity: 1;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -144,6 +172,9 @@ body.modal-open {
   max-width: 280px;
   height: 100%;
   object-fit: cover;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
 }
 
 .pokemon-name {
@@ -195,4 +226,5 @@ body.modal-open {
 .pokemon-description {
   font-size: 16px;
   line-height: 24px;
+  min-height: 72px;
 }

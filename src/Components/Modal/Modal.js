@@ -1,8 +1,13 @@
-import { BsXLg, BsArrowReturnLeft } from "react-icons/bs";
+import {
+  BsXLg,
+  BsArrowReturnLeft,
+  BsArrowRight,
+  BsArrowLeft,
+} from "react-icons/bs";
 import { typeColors, pokemonColors } from "../../helpers.js";
 import "./modal.css";
 import StatBar from "../StatBar/StatBar.js";
-
+import { useRef } from "react";
 const statColor = {
   0: "#66BB6A",
   1: "#E57373",
@@ -12,7 +17,16 @@ const statColor = {
   5: "#FFCC80",
 };
 
-const Modal = ({ isOpen, toggleModal, pokemon, pokemonSpecies }) => {
+const Modal = ({
+  isOpen,
+  toggleModal,
+  pokemon,
+  pokemonSpecies,
+  searchPokemon,
+  isLoading,
+}) => {
+  const modalDialog = useRef(null);
+
   if (isOpen) {
     document.body.classList.add("modal-open");
   } else {
@@ -31,19 +45,25 @@ const Modal = ({ isOpen, toggleModal, pokemon, pokemonSpecies }) => {
     return p.flavor_text.replace(/(\r\n|\n|\r|\f)/gm, ` `);
   };
 
+  const gotoNextPokemon = () => {
+    modalDialog.current.scrollIntoView({ behavior: "smooth" });
+    searchPokemon(pokemon.id + 1);
+  };
+
+  const gotoPrevPokemon = () => {
+    modalDialog.current.scrollIntoView({ behavior: "smooth" });
+    searchPokemon(pokemon.id - 1);
+  };
+
   return (
     <>
       {isOpen && (
         <div className="modal" onClick={closeModal}>
-          <div className="modal-dialog">
+          <div className="modal-dialog" ref={modalDialog}>
             <div className="modal-header">
               <h2 className="pokemon-name"> {pokemon.name} </h2>
               <button className="btn-dismiss" onClick={toggleModal}>
-                <BsXLg
-                  fontSize="1.2rem"
-                  color="#ffffff"
-                  style={{ height: "100%" }}
-                />
+                <BsXLg fontSize="1.2rem" style={{ height: "100%" }} />
               </button>
             </div>
             <div className="modal-body">
@@ -117,13 +137,25 @@ const Modal = ({ isOpen, toggleModal, pokemon, pokemonSpecies }) => {
               </div>
             </div>
             <div className="modal-footer">
-              <button className="btn-back" onClick={toggleModal}>
+              <button
+                className="footer-btn"
+                onClick={gotoPrevPokemon}
+                disabled={!isLoading && pokemon.id <= 1}
+              >
+                <BsArrowLeft fontSize="1.2rem" style={{ height: "100%" }} />
+              </button>
+              <button className="footer-btn-dismiss" onClick={toggleModal}>
                 <BsArrowReturnLeft
                   fontSize="1.2rem"
-                  color="#333333"
                   style={{ height: "100%" }}
                 />
-                {/* CLOSE */}
+              </button>
+              <button
+                className="footer-btn"
+                onClick={gotoNextPokemon}
+                disabled={!isLoading && pokemon.id >= 898}
+              >
+                <BsArrowRight fontSize="1.2rem" style={{ height: "100%" }} />
               </button>
             </div>
           </div>

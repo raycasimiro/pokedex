@@ -82,7 +82,7 @@ function App() {
       const species_response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`);
       const species_data = await species_response.json();
       setPokemonSpecies(species_data);
-      toggleModal(); 
+      !showModal && setShowModal(true); 
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -115,7 +115,7 @@ function App() {
     <>
       <Header searchPokemon = {searchPokemon}/>
       <main className="grid">
-        <Modal isOpen={showModal} toggleModal={toggleModal} pokemon={pokemon} pokemonSpecies = {pokemonSpecies}/>
+        <Modal isOpen={showModal} toggleModal={toggleModal} pokemon={pokemon} pokemonSpecies={pokemonSpecies} searchPokemon={searchPokemon} isLoading={isLoading}/>
         { isLoading && <Loader icon={PokeBallLoader} message="Catching Pokémon..."/> } 
         { pokemonList.map((pokemon, index)=>{
           let description = card_pokemonDescription[index].flavor_text;
